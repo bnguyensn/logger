@@ -1,0 +1,19 @@
+{
+  "name": "@bnguyensn/logger",
+  "version": "0.1.0",
+  "description": "Basic logger",
+  "main": "index.js",
+  "author": "@bnguyensn",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bnguyensn/logger.git"
+  },
+  "private": false,
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2"
+  }
+}

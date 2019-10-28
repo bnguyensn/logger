@@ -1,7 +1,7 @@
 {
   "name": "@bnguyensn/logger",
   "version": "0.1.0",
-  "description": "Basic logger",
+  "description": "A basic logger",
   "main": "index.js",
   "author": "@bnguyensn",
   "license": "MIT",

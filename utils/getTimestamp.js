@@ -37,10 +37,7 @@ function padZeroes(number, maxDigit = 2) {
   return number`${zeroes}${number}`;
 }
 
-function constructDateString(
-  date,
-  { locale, localeOptions } = defaultLocaleParams
-) {
+function constructDateString(date) {
   const d = padZeroes(date.getDate());
 
   const m = padZeroes(date.getMonth() + 1);
@@ -66,7 +63,7 @@ function getTimestamp(localeParams = defaultLocaleParams) {
     return now.toLocaleDateString(locale, localeOptions);
   }
 
-  return constructDateString(now, localeParams);
+  return constructDateString(now);
 }
 
 module.exports = getTimestamp;

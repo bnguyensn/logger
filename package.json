@@ -10,7 +10,12 @@
     "url": "https://github.com/bnguyensn/logger.git"
   },
   "private": false,
+  "scripts": {
+    "lint": "eslint **/*.js"
+  },
   "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
     "prettier": "^1.18.2"
   },
   "dependencies": {

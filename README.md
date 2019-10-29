@@ -62,13 +62,13 @@ This object describes how the timestamp for each logging message should look lik
 
 Property|Type|Description
 :---:|:---:|---
-`locale`|`string | undefined`|See [`toLocaleDateString()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString)'s `locales` parameter. If `undefined`, will attempt to use the system's locale.
+`locale`|`string \| undefined`|See [`toLocaleDateString()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString)'s `locales` parameter. If `undefined`, will attempt to use the system's locale.
 `localeOptions`|`object`|See [`toLocaleDateString()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString)'s `options` parameter.
 `custom`|`boolean`|If `true`, will ignore both the `locale` and `localeOptions` above and use a custom date format. If Node's `toLocaleDateString()` is not supported, we will fall back to this custom date format.
 
 ### `Logger`
 
-An instance of `Logger` is returned from calling [`createLogger()`](#createLogger(config)).
+An instance of `Logger` is returned from calling [`createLogger()`](#createLoggerconfig).
 
 This `Logger` instance can then be used to log stuff to the terminal.
 

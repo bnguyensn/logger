@@ -3,49 +3,54 @@ const { EOL } = require('os');
 const getTimestamp = require('./utils/getTimestamp');
 
 const defaultConfig = {
-  base: 'logger',
-  timestamp: true,
+  base: '',
+  timestamp: false,
 };
 
 class Logger {
-  constructor({ base, timestamp } = defaultConfig) {
+  constructor({ base, timestamp, timestampOptions } = defaultConfig) {
     this.base = base;
     this.timestamp = timestamp;
+    this.timestampOptions = timestampOptions;
   }
 
   constructMsg(msg) {
-    return `${this.base} • ${this.timestamp && getTimestamp()} • ${msg}`;
+    const baseStr = this.base ? `${this.base} • ` : '';
+    const timestampStr = this.timestamp
+      ? `${getTimestamp(this.timestampOptions)} • `
+      : '';
+    return `${baseStr}${timestampStr}${msg}`;
   }
 
-  logInfo(msg) {
+  info(msg) {
     console.log(chalk.blueBright(this.constructMsg(msg)));
   }
 
-  logInfoEOL(msg) {
+  infoEOL(msg) {
     console.log(chalk.blueBright(this.constructMsg(msg)) + EOL);
   }
 
-  logSuccess(msg) {
+  success(msg) {
     console.log(chalk.greenBright(this.constructMsg(msg)));
   }
 
-  logSuccessEOL(msg) {
+  successEOL(msg) {
     console.log(chalk.greenBright(this.constructMsg(msg)) + EOL);
   }
 
-  logWarn(msg) {
+  warn(msg) {
     console.log(chalk.yellowBright(this.constructMsg(msg)));
   }
 
-  logWarnEOL(msg) {
+  warnEOL(msg) {
     console.log(chalk.yellowBright(this.constructMsg(msg)) + EOL);
   }
 
-  logError(msg) {
+  error(msg) {
     console.log(chalk.redBright(this.constructMsg(msg)));
   }
 
-  logErrorEOL(msg) {
+  errorEOL(msg) {
     console.log(chalk.redBright(this.constructMsg(msg)) + EOL);
   }
 }

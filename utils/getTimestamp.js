@@ -11,7 +11,7 @@ const defaultLocaleOptions = {
   timeZoneName: 'short',
 };
 
-const defaultLocaleParams = {
+const defaultTimestampOptions = {
   locale: undefined,
   localeOptions: defaultLocaleOptions,
 };
@@ -34,7 +34,7 @@ function padZeroes(number, maxDigit = 2) {
 
   const zeroes = '0'.repeat(zeroesCount);
 
-  return number`${zeroes}${number}`;
+  return `${zeroes}${number}`;
 }
 
 function constructDateString(date) {
@@ -50,16 +50,16 @@ function constructDateString(date) {
 
   const sec = padZeroes(date.getSeconds());
 
-  const ms = padZeroes(date.getMilliseconds, 3);
+  const ms = padZeroes(date.getMilliseconds(), 3);
 
   return `${d}/${m}/${y} ${hr}:${min}:${sec}:${ms}`;
 }
 
-function getTimestamp(localeParams = defaultLocaleParams) {
+function getTimestamp(timestampOptions = defaultTimestampOptions) {
   const now = new Date(Date.now());
 
-  if (now.toLocaleDateString) {
-    const { locale, localeOptions } = localeParams;
+  if (now.toLocaleDateString && !timestampOptions.custom) {
+    const { locale, localeOptions } = timestampOptions;
     return now.toLocaleDateString(locale, localeOptions);
   }
 

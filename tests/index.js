@@ -1,48 +1,40 @@
-const loggerCreator = require('../index');
+const log = require('../index');
 
 function testLogger() {
   const configs = [
     {
       base: 'LOGGER',
-      timestamp: true,
+      timestampOptions: {},
     },
     {
       base: 'LOGGER',
     },
     {
-      timestamp: true,
+      timestampOptions: {},
     },
     undefined,
     {
       base: 'LOGGER',
-      timestamp: true,
       timestampOptions: {
         custom: true,
       },
     },
   ];
 
-  const loggers = [
-    loggerCreator(configs[0]),
-    loggerCreator(configs[1]),
-    loggerCreator(configs[2]),
-    loggerCreator(configs[3]),
-    loggerCreator(configs[4]),
-  ];
-
-  loggers.forEach((logger, i) => {
+  configs.forEach(config => {
     console.log(
-      `*** Logger outputs with config ${JSON.stringify(configs[i])}... ***`
+      `*** Logger outputs with config ${JSON.stringify(config)}... ***`
     );
     console.log('');
-    logger.info('Log info');
-    logger.infoEOL('Log info (line break)');
-    logger.success('Log success');
-    logger.successEOL('Log success (line break)');
-    logger.warn('Log warn');
-    logger.warnEOL('Log warn (line break)');
-    logger.error('Log error');
-    logger.errorEOL('Log error (line break)');
+
+    log.info('Log info', config);
+    log.infoEOL('Log info (line break)', config);
+    log.success('Log success', config);
+    log.successEOL('Log success (line break)', config);
+    log.warn('Log warn', config);
+    log.warnEOL('Log warn (line break)', config);
+    log.error('Log error', config);
+    log.errorEOL('Log error (line break)', config);
   });
 }
 

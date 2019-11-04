@@ -12,7 +12,9 @@
   "private": false,
   "scripts": {
     "test": "node tests/index.js",
-    "lint": "eslint **/*.js"
+    "lint": "eslint **/*.js",
+    "preversion": "yarn lint && yarn test",
+    "postversion": "git push origin master && git push --tags && npm publish"
   },
   "devDependencies": {
     "eslint": "^6.6.0",
